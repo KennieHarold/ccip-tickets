@@ -1,0 +1,17 @@
+{
+  "name": "ccip-tickets",
+  "author": "Kennie Harold Mantac",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "scripts": {
+    "clean": "npm exec --workspaces -- npx rimraf node_modules && npx rimraf node_modules"
+  },
+  "devDependencies": {
+    "prettier-plugin-solidity": "^1.2.0"
+  },
+  "license": "ISC",
+  "workspaces": [
+    "contracts"
+  ]
+}
