@@ -5,6 +5,8 @@
   "private": true,
   "description": "",
   "scripts": {
+    "contracts:test": "npm exec --workspace contracts npm run test",
+    "contracts:compile": "npm exec --workspace contracts npm run compile",
     "clean": "npm exec --workspaces -- npx rimraf node_modules && npx rimraf node_modules"
   },
   "devDependencies": {
