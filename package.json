@@ -9,6 +9,8 @@
     "contracts:compile": "npm exec --workspace contracts npm run compile",
     "contracts:deploy:mumbai:verifier": "npm exec --workspace contracts npm run deploy:mumbai:verifier",
     "contracts:verify:mumbai:verifier": "npm exec --workspace contracts npm run verify:mumbai:verifier",
+    "contracts:set:zkp:mumbai": "npm exec --workspace contracts npm run set:zkp:mumbai",
+    "contracts:generate:qr:zkp:mumbai": "npm exec --workspace contracts npm run generate:qr:zkp:mumbai",
     "clean": "npm exec --workspaces -- npx rimraf node_modules && npx rimraf node_modules"
   },
   "devDependencies": {

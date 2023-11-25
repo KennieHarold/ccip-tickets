@@ -2,5 +2,5 @@
 pragma solidity ^0.8.16;
 
 interface ITicketNFT {
-	function purchaseTicket(address to) external payable;
+    function purchaseTicket(address to) external payable;
 }

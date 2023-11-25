@@ -5,8 +5,10 @@
   "scripts": {
     "test": "hardhat test",
     "compile": "hardhat compile",
-    "deploy:mumbai:verifier": "hardhat run scripts/deployTicketVerifier.ts --network polygon_mumbai",
-    "verify:mumbai:verifier": "hardhat run scripts/verifyTicketVerifier.ts --network polygon_mumbai"
+    "deploy:mumbai:verifier": "hardhat run scripts/deployment/deployTicketVerifier.ts --network polygon_mumbai",
+    "verify:mumbai:verifier": "hardhat run scripts/deployment/verifyTicketVerifier.ts --network polygon_mumbai",
+    "set:zkp:mumbai": "hardhat run scripts/zkp/setZKPProof.ts --network polygon_mumbai",
+    "generate:qr:zkp:mumbai": "hardhat run scripts/zkp/generateQRLinkProof.ts --network polygon_mumbai"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",

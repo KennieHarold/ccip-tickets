@@ -1,15 +1,8 @@
 import { ethers } from 'hardhat';
-import {
-  InvokeRequestMetadataTypeURL,
-  Operators,
-  SchemaClaimPathKeys,
-  SchemaHash,
-  SchemaType,
-  SchemaUrl
-} from './constants';
-import { calculateQueryHash, packValidatorParams } from './utils';
+import { calculateQueryHash, packValidatorParams } from '../utils';
 import { MockSigValidator, TicketVerifier } from '../typechain-types';
-import { Query } from './types';
+import { Query } from '../types';
+import { Operators, ProofConfig } from '../constants';
 
 describe('TicketVerifier Test Suite', async function () {
   let TicketVerifier: TicketVerifier;
@@ -36,8 +29,8 @@ describe('TicketVerifier Test Suite', async function () {
       const requestId = 1;
       query = {
         requestId,
-        schema: SchemaHash,
-        claimPathKey: SchemaClaimPathKeys.age,
+        schema: ProofConfig.schema.hash,
+        claimPathKey: ProofConfig.schema.claimPathKeys.age,
         operator: Operators.GT,
         slotIndex: 0,
         value: [18, ...new Array(63).fill(0)],
@@ -62,16 +55,16 @@ describe('TicketVerifier Test Suite', async function () {
         Validator.getAddress()
       ]);
 
-      const invokeRequestMetadata = {
-        id: 'test-id',
-        typ: 'application/iden3comm-plain-json',
-        type: InvokeRequestMetadataTypeURL,
-        thid: 'test-id',
+      const metadata = {
+        id: ProofConfig.thid,
+        typ: ProofConfig.metadataType,
+        type: ProofConfig.metadataTypeURL,
+        thid: ProofConfig.thid,
         body: {
-          reason: 'tourist ticket mint',
+          reason: ProofConfig.name,
           transaction_data: {
             contract_address: verifierAddress,
-            method_id: 'b68967e2',
+            method_id: ProofConfig.methodId,
             chain_id: 31337,
             network: 'hardhat'
           },
@@ -81,20 +74,20 @@ describe('TicketVerifier Test Suite', async function () {
               circuitId: query.circuitIds[0],
               query: {
                 allowedIssuers: ['*'],
-                context: SchemaUrl,
+                context: ProofConfig.schema.url,
                 credentialSubject: {
                   age: {
                     $gt: 18
                   }
                 },
-                type: SchemaType
+                type: ProofConfig.schema.type
               }
             }
           ]
         }
       };
       await TicketVerifier.setZKPRequest(query.requestId, {
-        metadata: JSON.stringify(invokeRequestMetadata),
+        metadata: JSON.stringify(metadata),
         validator: validatorAddress,
         data: packValidatorParams(query)
       });
