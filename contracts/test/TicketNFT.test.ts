@@ -3,12 +3,6 @@ import { expect } from 'chai';
 import { SignerWithAddress } from '@nomicfoundation/hardhat-ethers/signers';
 import { MockTicketNFT } from '../typechain-types';
 
-async function timeTravel(travelTo: number) {
-  await ethers.provider.send('evm_mine', []);
-  await ethers.provider.send('evm_setNextBlockTimestamp', [travelTo]);
-  await ethers.provider.send('evm_mine', []);
-}
-
 describe('TicketNFT Test Suite', async function () {
   let [owner, user1, verifier]: SignerWithAddress[] = [];
   let TicketNFT: MockTicketNFT;
@@ -26,7 +20,7 @@ describe('TicketNFT Test Suite', async function () {
 
     it('should return correct data', async function () {
       expect(await TicketNFT.TICKET_PRICE()).equals(ethers.parseEther('0.001'));
-      expect(await TicketNFT.DAILY_MINT_LIMIT()).equals(5000);
+      expect(await TicketNFT.DAILY_PURCHASE_LIMIT()).equals(5000);
       expect(await TicketNFT.thisDayTotalMint()).equals(0);
     });
   });

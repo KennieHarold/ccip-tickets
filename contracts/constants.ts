@@ -1,3 +1,5 @@
+// cSpell:disable
+
 export const Operators = {
   NOOP: 0, // No operation, skip query verification in circuit
   EQ: 1, // equal
@@ -15,8 +17,8 @@ export const ProofConfig = {
   methodId: 'b68967e2',
   schema: {
     type: 'KYCTouristCredential',
-    url: 'https://cloudflare-ipfs.com/ipfs/QmTWCK9ytm7uvBFqhQB1C82TTkup1mNUFupZhhw2RG3FkW',
-    hash: '261545838496299009516134291751007207471',
+    url: 'ipfs://QmTWCK9ytm7uvBFqhQB1C82TTkup1mNUFupZhhw2RG3FkW',
+    hash: '203621442218429609519043541580190658077',
     claimPathKeys: {
       age: '10660011478973528120113144268474763699577191512342106881786643070769961423718'
     }
@@ -35,6 +37,12 @@ export const ContractsConfig: any = {
     polygon_mumbai: {
       key: 'POLYGON_MUMBAI_SIG_VALIDATOR_ADDRESS',
       value: process.env.POLYGON_MUMBAI_SIG_VALIDATOR_ADDRESS
+    }
+  },
+  sampleERC20Verifier: {
+    polygon_mumbai: {
+      key: 'POLYGON_MUMBAI_SAMPLE_ERC20_VERIFIER_ADDRESS',
+      value: process.env.POLYGON_MUMBAI_SAMPLE_ERC20_VERIFIER_ADDRESS
     }
   }
 };

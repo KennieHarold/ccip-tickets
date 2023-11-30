@@ -3,46 +3,37 @@ import { poseidon } from '@iden3/js-crypto';
 import { SchemaHash } from '@iden3/js-iden3-core';
 import { prepareCircuitArrayValues } from '@0xpolygonid/js-sdk';
 import { Query } from './types';
+import Web3 from 'web3';
 
 export function packValidatorParams(query: Query, allowedIssuers: number[] = []) {
-  const abiCoder = new ethers.AbiCoder();
-  const {
-    schema,
-    claimPathKey,
-    operator,
-    slotIndex,
-    value,
-    queryHash,
-    circuitIds,
-    skipClaimRevocationCheck,
-    claimPathNotExists
-  } = query;
-
-  return abiCoder.encode(
-    [
-      'uint256',
-      'uint256',
-      'uint256',
-      'uint256',
-      'uint256[]',
-      'uint256',
-      'uint256[]',
-      'string[]',
-      'bool',
-      'uint256'
-    ],
-    [
-      schema,
-      claimPathKey,
-      operator,
-      slotIndex,
-      value,
-      queryHash,
-      allowedIssuers,
-      circuitIds,
-      skipClaimRevocationCheck,
-      claimPathNotExists
-    ]
+  const web3 = new Web3(Web3.givenProvider);
+  return web3.eth.abi.encodeParameter(
+    {
+      CredentialAtomicQuery: {
+        schema: 'uint256',
+        claimPathKey: 'uint256',
+        operator: 'uint256',
+        slotIndex: 'uint256',
+        value: 'uint256[]',
+        queryHash: 'uint256',
+        allowedIssuers: 'uint256[]',
+        circuitIds: 'string[]',
+        skipClaimRevocationCheck: 'bool',
+        claimPathNotExists: 'uint256'
+      }
+    },
+    {
+      schema: query.schema,
+      claimPathKey: query.claimPathKey,
+      operator: query.operator,
+      slotIndex: query.slotIndex,
+      value: query.value,
+      queryHash: query.queryHash,
+      allowedIssuers: allowedIssuers,
+      circuitIds: query.circuitIds,
+      skipClaimRevocationCheck: query.skipClaimRevocationCheck,
+      claimPathNotExists: query.claimPathNotExists
+    }
   );
 }
 

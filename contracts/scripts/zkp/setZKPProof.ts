@@ -83,9 +83,9 @@ async function main() {
 
   const provider = ethers.provider;
   const signer = new ethers.Wallet(process.env.PRIVATE_KEY || '', provider);
-  const TicketVerifier = await ethers.getContractAt('TicketVerifier', verifierAddress, signer);
+  const Verifier = await ethers.getContractAt('TicketVerifier', verifierAddress, signer);
 
-  await TicketVerifier.setZKPRequest(query.requestId, {
+  await Verifier.setZKPRequest(query.requestId, {
     metadata: JSON.stringify(metadata),
     validator: validatorAddress,
     data: packValidatorParams(query)

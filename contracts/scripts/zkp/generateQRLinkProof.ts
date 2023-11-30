@@ -1,11 +1,5 @@
 import hre from 'hardhat';
-import {
-  ContractsConfig,
-  HardhatNetworkToProofNetwork,
-  Operators,
-  ProofConfig
-} from '../../constants';
-import { calculateQueryHash } from '../../utils';
+import { ContractsConfig, HardhatNetworkToProofNetwork, ProofConfig } from '../../constants';
 
 async function main() {
   const networkParam = hre.hardhatArguments.network;
@@ -20,28 +14,6 @@ async function main() {
 
   const thresholdAgeToVerify = 18;
   const requestId = 1;
-
-  const query = {
-    requestId,
-    schema: ProofConfig.schema.hash,
-    claimPathKey: ProofConfig.schema.claimPathKeys.age,
-    operator: Operators.GT,
-    slotIndex: 0,
-    value: [thresholdAgeToVerify, ...new Array(63).fill(0)],
-    circuitIds: ['credentialAtomicQuerySigV2OnChain'],
-    skipClaimRevocationCheck: false,
-    claimPathNotExists: 0,
-    queryHash: ''
-  };
-  query.queryHash = calculateQueryHash(
-    query.value,
-    query.schema,
-    query.slotIndex,
-    query.operator,
-    query.claimPathKey,
-    query.claimPathNotExists
-  ).toString();
-
   const network = hre.config.networks[networkParam];
 
   const proof = {
@@ -59,8 +31,8 @@ async function main() {
       },
       scope: [
         {
-          id: query.requestId,
-          circuitId: query.circuitIds[0],
+          id: requestId,
+          circuitId: 'credentialAtomicQuerySigV2OnChain',
           query: {
             allowedIssuers: ['*'],
             context: ProofConfig.schema.url,

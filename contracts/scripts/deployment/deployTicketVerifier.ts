@@ -1,14 +1,7 @@
 import hre from 'hardhat';
-import fs from 'fs';
 import { ethers } from 'hardhat';
 import { ContractsConfig } from '../../constants';
-
-function updateEnv(key: string, value: string) {
-  const envFilePath = './.env';
-  const envContents = fs.readFileSync(envFilePath, 'utf-8');
-  const updatedEnvKey = envContents.replace(new RegExp(`^${key}=.*`, 'gm'), `${key}=${value}`);
-  fs.writeFileSync(envFilePath, updatedEnvKey);
-}
+import { updateEnv } from '../utils';
 
 async function main() {
   const networkParam = hre.hardhatArguments.network;
