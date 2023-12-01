@@ -32,7 +32,7 @@ async function main() {
       scope: [
         {
           id: requestId,
-          circuitId: 'credentialAtomicQuerySigV2OnChain',
+          circuitId: ProofConfig.circuitId,
           query: {
             allowedIssuers: ['*'],
             context: ProofConfig.schema.url,
@@ -49,6 +49,7 @@ async function main() {
   };
 
   const base64String = btoa(JSON.stringify(proof));
+  console.log(JSON.stringify(proof));
   console.log(`iden3comm://\?i_m=${base64String}`);
 }
 

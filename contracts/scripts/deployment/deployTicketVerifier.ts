@@ -1,7 +1,7 @@
 import hre from 'hardhat';
 import { ethers } from 'hardhat';
 import { ContractsConfig } from '../../constants';
-import { updateEnv } from '../utils';
+import { updateEnv } from '../../utils';
 
 async function main() {
   const networkParam = hre.hardhatArguments.network;

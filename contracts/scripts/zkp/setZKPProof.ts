@@ -33,7 +33,7 @@ async function main() {
     operator: Operators.GT,
     slotIndex: 0,
     value: [thresholdAgeToVerify, ...new Array(63).fill(0)],
-    circuitIds: ['credentialAtomicQuerySigV2OnChain'],
+    circuitIds: [ProofConfig.circuitId],
     skipClaimRevocationCheck: false,
     claimPathNotExists: 0,
     queryHash: ''
@@ -46,6 +46,8 @@ async function main() {
     query.claimPathKey,
     query.claimPathNotExists
   ).toString();
+
+  console.log(query);
 
   const network = hre.config.networks[networkParam];
 

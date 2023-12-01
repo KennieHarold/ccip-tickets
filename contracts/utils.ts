@@ -1,9 +1,16 @@
-import { ethers } from 'hardhat';
+import Web3 from 'web3';
+import fs from 'fs';
 import { poseidon } from '@iden3/js-crypto';
 import { SchemaHash } from '@iden3/js-iden3-core';
 import { prepareCircuitArrayValues } from '@0xpolygonid/js-sdk';
 import { Query } from './types';
-import Web3 from 'web3';
+
+export function updateEnv(key: string, value: string) {
+  const envFilePath = './.env';
+  const envContents = fs.readFileSync(envFilePath, 'utf-8');
+  const updatedEnvKey = envContents.replace(new RegExp(`^${key}=.*`, 'gm'), `${key}=${value}`);
+  fs.writeFileSync(envFilePath, updatedEnvKey);
+}
 
 export function packValidatorParams(query: Query, allowedIssuers: number[] = []) {
   const web3 = new Web3(Web3.givenProvider);
@@ -63,5 +70,3 @@ function coreSchemaFromStr(schemaIntString: string) {
   const schemaInt = BigInt(schemaIntString);
   return SchemaHash.newSchemaHashFromInt(schemaInt);
 }
-
-export function convertStringToBigNumber() {}

@@ -17,13 +17,14 @@ export const ProofConfig = {
   methodId: 'b68967e2',
   schema: {
     type: 'KYCTouristCredential',
-    url: 'ipfs://QmTWCK9ytm7uvBFqhQB1C82TTkup1mNUFupZhhw2RG3FkW',
-    hash: '203621442218429609519043541580190658077',
+    url: 'ipfs://QmU9Re2P93tV4KYT8Si2aCBQYG4zGsw6wBbZki3Yoh68rh',
+    hash: '130903017388616086343241723006487066025',
     claimPathKeys: {
-      age: '10660011478973528120113144268474763699577191512342106881786643070769961423718'
+      age: '13769861309497563805705163485132244960157997917302847060583313483605752727827'
     }
   },
-  thid: 'zkp-age-credential-thread-id'
+  thid: '7f38a193-0918-4a48-9fac-36adfdb8b542',
+  circuitId: 'credentialAtomicQuerySigV2OnChain'
 };
 
 export const ContractsConfig: any = {
