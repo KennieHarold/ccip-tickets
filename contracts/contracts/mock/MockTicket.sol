@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.16;
 
-import "../TicketNFT.sol";
+import "../Ticket.sol";
 
-contract MockTicketNFT is TicketNFT {
+contract MockTicket is Ticket {
     function purchaseTicket() external {
         super._purchaseTicket();
     }

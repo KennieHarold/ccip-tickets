@@ -6,7 +6,7 @@ async function main() {
   if (!networkParam) {
     throw new Error('Network undefined');
   }
-  const contractAddress = ContractsConfig.ticketVerifier[networkParam].value;
+  const contractAddress = ContractsConfig.verifier[networkParam].value;
   console.log(`Verifying contract on "${networkParam}" with address ${contractAddress}`);
 
   await hre.run('verify:verify', {

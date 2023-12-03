@@ -13,8 +13,8 @@ async function main() {
     throw new Error('Network undefined');
   }
 
-  const verifierAddress = ContractsConfig.ticketVerifier[networkParam].value || '';
-  const validatorAddress = ContractsConfig.validatorSig[networkParam].value || '';
+  const verifierAddress = ContractsConfig.verifier[networkParam].value || '';
+  const validatorAddress = ContractsConfig.validator[networkParam].value || '';
 
   if (verifierAddress === '') {
     throw new Error('Verifier undefined');
@@ -46,8 +46,6 @@ async function main() {
     query.claimPathKey,
     query.claimPathNotExists
   ).toString();
-
-  console.log(query);
 
   const network = hre.config.networks[networkParam];
 

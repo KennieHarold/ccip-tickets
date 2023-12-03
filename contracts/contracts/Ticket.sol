@@ -4,10 +4,10 @@ pragma solidity ^0.8.16;
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-error TicketNFT__DailyPurchaseLimitReached();
-error TicketNFT__InsufficientBalance();
+error Ticket__DailyPurchaseLimitReached();
+error Ticket__InsufficientBalance();
 
-contract TicketNFT is ERC721, Ownable {
+contract Ticket is ERC721, Ownable {
     uint256 public constant TICKET_PRICE = 0.001 ether;
     uint32 public constant DAILY_PURCHASE_LIMIT = 5000;
 
@@ -17,14 +17,14 @@ contract TicketNFT is ERC721, Ownable {
     uint32 public dailyMintLimit;
     uint32 public thisDayTotalMint;
 
-    constructor() ERC721("TicketNFT", "TTT") {
+    constructor() ERC721("Ticket", "TTT") {
         dailyMintItervalTime = block.timestamp;
         thisDayTotalMint = 0;
     }
 
     modifier priceCompliance() {
         if (TICKET_PRICE > msg.value) {
-            revert TicketNFT__InsufficientBalance();
+            revert Ticket__InsufficientBalance();
         }
         _;
     }
@@ -35,7 +35,7 @@ contract TicketNFT is ERC721, Ownable {
             dailyMintItervalTime = block.timestamp;
         }
         if (thisDayTotalMint > DAILY_PURCHASE_LIMIT) {
-            revert TicketNFT__DailyPurchaseLimitReached();
+            revert Ticket__DailyPurchaseLimitReached();
         }
         _;
     }

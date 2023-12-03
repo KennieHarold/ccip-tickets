@@ -4,12 +4,12 @@ pragma solidity ^0.8.16;
 import { PrimitiveTypeUtils } from "@iden3/contracts/lib/PrimitiveTypeUtils.sol";
 import { ICircuitValidator } from "@iden3/contracts/interfaces/ICircuitValidator.sol";
 import { ZKPVerifier } from "@iden3/contracts/verifiers/ZKPVerifier.sol";
-import "./TicketNFT.sol";
+import "./Ticket.sol";
 
 error TicketVerifier__SenderNotInProof();
 error TicketVerifier__InvalidRequestId();
 
-contract TicketVerifier is ZKPVerifier, TicketNFT {
+contract TicketVerifier is ZKPVerifier, Ticket {
     uint64 public constant PURCHASE_TICKET_REQUEST_ID = 1;
 
     function _beforeProofSubmit(

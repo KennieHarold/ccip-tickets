@@ -28,22 +28,22 @@ export const ProofConfig = {
 };
 
 export const ContractsConfig: any = {
-  ticketVerifier: {
+  verifier: {
     polygon_mumbai: {
-      key: 'POLYGON_MUMBAI_TICKET_VERIFIER_ADDRESS',
-      value: process.env.POLYGON_MUMBAI_TICKET_VERIFIER_ADDRESS
+      key: 'POLYGON_MUMBAI_VERIFIER_ADDRESS',
+      value: process.env.POLYGON_MUMBAI_VERIFIER_ADDRESS
     }
   },
-  validatorSig: {
+  validator: {
     polygon_mumbai: {
-      key: 'POLYGON_MUMBAI_SIG_VALIDATOR_ADDRESS',
-      value: process.env.POLYGON_MUMBAI_SIG_VALIDATOR_ADDRESS
+      key: 'POLYGON_MUMBAI_VALIDATOR_ADDRESS',
+      value: process.env.POLYGON_MUMBAI_VALIDATOR_ADDRESS
     }
   },
-  sampleERC20Verifier: {
+  state: {
     polygon_mumbai: {
-      key: 'POLYGON_MUMBAI_SAMPLE_ERC20_VERIFIER_ADDRESS',
-      value: process.env.POLYGON_MUMBAI_SAMPLE_ERC20_VERIFIER_ADDRESS
+      key: 'POLYGON_MUMBAI_STATE_ADDRESS',
+      value: process.env.POLYGON_MUMBAI_STATE_ADDRESS
     }
   }
 };

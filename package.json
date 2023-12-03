@@ -8,6 +8,7 @@
     "contracts:test": "npm exec --workspace contracts npm run test",
     "contracts:compile": "npm exec --workspace contracts npm run compile",
     "contracts:deploy:mumbai:verifier": "npm exec --workspace contracts npm run deploy:mumbai:verifier",
+    "contracts:deploy:mumbai:validator": "npm exec --workspace contracts npm run deploy:mumbai:validator",
     "contracts:verify:mumbai:verifier": "npm exec --workspace contracts npm run verify:mumbai:verifier",
     "contracts:set:zkp:mumbai": "npm exec --workspace contracts npm run set:zkp:mumbai",
     "contracts:generate:qr:zkp:mumbai": "npm exec --workspace contracts npm run generate:qr:zkp:mumbai",

@@ -1,11 +1,11 @@
 import { ethers } from 'hardhat';
 import { expect } from 'chai';
 import { SignerWithAddress } from '@nomicfoundation/hardhat-ethers/signers';
-import { MockTicketNFT } from '../typechain-types';
+import { MockTicket } from '../typechain-types';
 
 describe('TicketNFT Test Suite', async function () {
   let [owner, user1, verifier]: SignerWithAddress[] = [];
-  let TicketNFT: MockTicketNFT;
+  let TicketNFT: MockTicket;
 
   before(async function () {
     [owner, user1, verifier] = await ethers.getSigners();
@@ -13,7 +13,7 @@ describe('TicketNFT Test Suite', async function () {
 
   describe('#Deployment', async function () {
     it('should deploy contract', async function () {
-      const Contract = await ethers.getContractFactory('MockTicketNFT');
+      const Contract = await ethers.getContractFactory('MockTicket');
       TicketNFT = await Contract.deploy();
       TicketNFT.waitForDeployment();
     });

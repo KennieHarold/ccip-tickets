@@ -5,8 +5,9 @@
   "scripts": {
     "test": "hardhat test",
     "compile": "hardhat compile",
-    "deploy:mumbai:verifier": "hardhat run scripts/deployment/deployTicketVerifier.ts --network polygon_mumbai",
-    "verify:mumbai:verifier": "hardhat run scripts/deployment/verifyTicketVerifier.ts --network polygon_mumbai",
+    "deploy:mumbai:verifier": "hardhat run scripts/deployment/deployVerifier.ts --network polygon_mumbai",
+    "deploy:mumbai:validator": "hardhat run scripts/deployment/deployValidator.ts --network polygon_mumbai",
+    "verify:mumbai:verifier": "hardhat run scripts/deployment/verifyVerifier.ts --network polygon_mumbai",
     "set:zkp:mumbai": "hardhat run scripts/zkp/setZKPProof.ts --network polygon_mumbai",
     "generate:qr:zkp:mumbai": "hardhat run scripts/zkp/generateQRLinkProof.ts --network polygon_mumbai"
   },
@@ -17,6 +18,7 @@
     "@nomicfoundation/hardhat-toolbox": "^4.0.0",
     "@nomicfoundation/hardhat-verify": "^2.0.0",
     "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers",
+    "@openzeppelin/hardhat-upgrades": "^2.4.3",
     "@typechain/ethers-v6": "^0.5.0",
     "@typechain/hardhat": "^9.0.0",
     "@types/chai": "^4.2.0",

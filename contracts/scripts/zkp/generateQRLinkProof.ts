@@ -7,7 +7,7 @@ async function main() {
     throw new Error('Network undefined');
   }
 
-  const verifierAddress = ContractsConfig.ticketVerifier[networkParam].value || '';
+  const verifierAddress = ContractsConfig.verifier[networkParam].value || '';
   if (verifierAddress === '') {
     throw new Error('Verifier undefined');
   }
